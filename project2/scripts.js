@@ -1,10 +1,12 @@
 "use strict"
 
 //Event
+//why are changes not registering ahhh
 window.onload = (e) => {document.querySelector("button").onclick = search};
 
 function search() {
     const STAR_URL = "http://swapi.co/api/";
+    const proxyurl = "https://cors-anywhere.herokuapp.com/"; //Proxy needed for access via cors
     let url = STAR_URL;
     let searchTerm = document.querySelector("#search");
     let displayTerm = "";
@@ -20,7 +22,7 @@ function search() {
 
     //Logs URL for debug, request data
     console.log(url);
-    getData(url);
+    getData(proxyurl + url);
 
 }
 
