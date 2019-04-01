@@ -3,3 +3,18 @@
     background: black;
     font-family: sans-serif;
 }
+
+#wrapper{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+
+}
+
+header{
+    background: lightslategray;
+    border-radius: 1
+    
+}
+section{
+    border: 1px solid white;
+}
