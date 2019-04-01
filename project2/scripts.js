@@ -19,7 +19,7 @@ function search() {
 
 
 
-$("#flip").flip({
+$(".flip").flip({
     trigger: 'click',
     reverse: false,
     axis: 'y'
