@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +10,62 @@
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <title>Project 2</title>
 </head>
+
 <body>
-        <div id = "wrapper"> 
-<header>
-<h1>Star Finder!</h1>
-<input type="text" id= "search">
-<button type="submit">Search!</button>
-</header>
-   <div id = "wrapper"> 
-       <div id = "flip">
-    <div class="front">
-        <section>
+    <header>
+        <h1>Star Finder!</h1>
+    </header>
+    <div id="wrapper">
+        <input type="text" id="search">
+        <button id="searchButton" type="submit">Search!</button>
+        <div id="random">
+            <h3>Cannot decide who to search? Here are some random characters!</h3>
+        </div>
+        <div id = "flipImages">
+        <div class="flip">
+            <div class="front">
+                <section>
+                    <p>Image 1</p>
+                </section>
+            </div>
+            <div class="back">
 
-        </section>
-    </div>
-    <div class = "back">
+            </div>
+        </div>
+        <div class="flip">
+            <div class="front">
+                <section>
+                    <p>Image 2</p>
+                </section>
+            </div>
+            <div class="back">
 
+            </div>
+        </div>
+        <div class="flip">
+            <div class="front">
+                <section>
+                    <p>Image 3</p>
+                </section>
+            </div>
+            <div class="back">
+
+            </div>
+        </div>
+        </div>
+        <select id="filter">
+            <option value="0">Select movie to filter results! </option>
+            <option value="4">Episode 4 </option>
+            <option value="5">Episode 5 </option>
+            <option value="6">Episode 6 </option>
+            <option value="1">Episode 1 </option>
+            <option value="2">Episode 2 </option>
+            <option value="3">Episode 3 </option>
+        </select>
+        <button id="newRandom" type="submit">New Random Characters!</button>
     </div>
-       </div>
-    <select id = "filter">
-    <option value = "4">Episode 4 </option>
-    <option value = "5">Episode 5 </option>
-    <option value = "6">Episode 6 </option>
-    <option value = "1">Episode 1 </option>
-    <option value = "2">Episode 2 </option>
-    <option value = "3">Episode 3 </option>
-    </select>
-    <button id ="newRandom" type = "submit">New Random Characters!</button>
-   </div>
- <script src = "scripts.js"></script>  
+    <script src="scripts.js"></script>
 
 </body>
+
 </html>

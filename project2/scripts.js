@@ -49,7 +49,7 @@ function dataError(e){
 }
 
 
-$("#flip").flip({
+$(".flip").flip({
     trigger: 'click',
     reverse: false,
     axis: 'y'
