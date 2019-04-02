@@ -6,6 +6,9 @@ window.onload = (e) => {document.querySelector("button").onclick = searchByFilm}
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
+//Google API key
+const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
+
 //Searches for a film, then gets random characters from the film.
 function searchByFilm() {
     const STAR_URL = "http://swapi.co/api/";
@@ -50,6 +53,22 @@ function getCharacterData(url){
     xhr.open("GET", proxyurl + url);
     xhr.send();
 }
+
+//Get data from google
+function getGoogleImageData(url)
+{
+    let xhr = new XMLHttpRequest();
+
+    xhr.onerror = dataError;
+    xhr.onload = googleImageDataLoaded;
+
+    xhr.open("Get", url);
+    xhr.send();
+}
+
+//this might be useful
+//https://www.googleapis.com/customsearch/v1?key=YOUR-KEY&cx=017576662512468239146:omuauf_lfve&q=tomato&callback=hndlr
+
 
 //
 //End Data Requests
