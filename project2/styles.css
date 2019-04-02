@@ -41,6 +41,9 @@ body {
 .back {
     background-color: white;
 }
+.back p {
+   font-size: 20px;
+}
 
 header {
     display: flex;

@@ -100,6 +100,11 @@ function parseCharacterData(data)
     console.log("Birth Year: " + object.birth_year);
     console.log("Hair Color: " + object.hair_color);
     console.log("Eye Color: " + object.eye_color);
+        let backData = document.querySelector(".data");
+        backData.innerHTML =  "Name: " + object.name + "<br>" +
+          "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" +"Hair Color: " + object.hair_color + "<br>" + 
+          "Eye Color: " + object.eye_color;
+
 }
 
 //Function will report an error fetching data
