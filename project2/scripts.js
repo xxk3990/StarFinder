@@ -11,9 +11,9 @@ const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
 
 //Get all characters
 function getAllCharacters() {
-    const STAR_URL = "http://swapi.co/api/people/";
+    const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
-    /*
+    
     let searchTerm = document.querySelector("#search");
     let displayTerm = "";
     searchTerm = displayTerm;
@@ -25,7 +25,8 @@ function getAllCharacters() {
 
     let filter = document.querySelector("#filter");
     url += "films/" + filter.options[filter.selectedIndex].value + "/";
-    */
+
+    console.log(url);
 
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
@@ -54,9 +55,9 @@ function getCharactersFromFilm(data){
 
     //Parse response data
     let object = JSON.parse(data); //Usabale JS object
-    let possibleCharacters = object.results; //All of the characters
+    let possibleCharacters = object.characters; //All of the characters
 
-    /*Randomly selects three characters
+    //Randomly selects three characters
     let selectedCharacters =[];
     for(let i = 0; i< 3; i++)
     {
@@ -65,7 +66,7 @@ function getCharactersFromFilm(data){
         //Now access character data
         getCharacterData(selectedCharacters[i]);
     }
-    */
+    
    console.log(possibleCharacters);
 }
 
