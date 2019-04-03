@@ -24,7 +24,13 @@ function getAllCharacters() {
     }
 
     let filter = document.querySelector("#filter");
-    url += "films/" + filter.options[filter.selectedIndex].value + "/";
+    let selectedMovie = filter.options[filter.selectedIndex].value
+    
+    //Pick a random movie if the user didn't pick one
+    while (selectedMovie == 0) 
+    {selectedMovie = Math.floor(Math.random() * 6)}
+
+    url += "films/" + selectedMovie + "/";
 
     console.log(url);
 
