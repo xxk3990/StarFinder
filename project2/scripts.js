@@ -1,5 +1,5 @@
 "use strict"
-
+let characterNumber = 0;
 //Event
 window.onload = (e) => {document.querySelector("button").onclick = getAllCharacters};
 
@@ -9,7 +9,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 //Google API key
 const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
 
-//Get all characters
+//Form the proper URL
 function getAllCharacters() {
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
@@ -32,13 +32,11 @@ function getAllCharacters() {
 
     url += "films/" + selectedMovie + "/";
 
-    console.log(url);
-
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
 }
 
-
+//Responsible for making the server request
 function requestCharacterData(url){
     let xhr = new XMLHttpRequest();
 
@@ -49,6 +47,7 @@ function requestCharacterData(url){
     xhr.send();
 }
 
+//When data is loaded, this grabs the response
 function filmDataLoaded(e){
     let xhr = e.target;
 
@@ -70,43 +69,36 @@ function getCharactersFromFilm(data){
         selectedCharacters.push(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]);
 
         //Now access character data
+
         getCharacterData(selectedCharacters[i]);
     }
     
    console.log(possibleCharacters);
 }
 
-//Get specific character info from a supplied URL
+//Get characters from film gave us url's to character info; now we request data from those urls
 function getCharacterData(url){
     let xhr = new XMLHttpRequest();
-
     xhr.onerror = dataError;
-    xhr.onload = characterDataLoaded;
-
     xhr.open("GET", proxyurl + url);
     xhr.send();
-}
+    xhr.onload = (e) => {
+        console.log("RUN");
+        let xhr = e.target;
 
-function characterDataLoaded(e){
-    let xhr = e.target;
-
-    //Parse character data on successful request
-    parseCharacterData(xhr.responseText)
+        //Parse character data on successful request
+        parseCharacterData(xhr.responseText);
+    };
 }
 
 //Called to parse in character data
 function parseCharacterData(data)
 {
+
     let object = JSON.parse(data);
 
-    //All info about the characters is grabbed here.
-    //For now these are debug logs, but eventually will generate HTML elements.
-    console.log("Name: " + object.name);
-    console.log("Gender: " + object.gender);
-    console.log("Birth Year: " + object.birth_year);
-    console.log("Hair Color: " + object.hair_color);
-    console.log("Eye Color: " + object.eye_color);
-        let backData = document.querySelector(".data");
+        characterNumber++;
+        let backData = document.querySelector(".data" + characterNumber);
         backData.innerHTML =  "Name: " + object.name + "<br>" +
           "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" +"Hair Color: " + object.hair_color + "<br>" + 
           "Eye Color: " + object.eye_color;
