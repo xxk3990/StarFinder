@@ -1,7 +1,14 @@
 "use strict"
+
 let characterNumber = 0;
-//Event
-window.onload = (e) => {document.querySelector("button").onclick = getAllCharacters};
+let status;
+
+//Load event
+window.onload = (e) => {
+    document.querySelector("button").onclick = getAllCharacters
+    status = document.querySelector("#status");
+    status.innerHTML = "Status: Ready to search!";
+};
 
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -11,6 +18,8 @@ const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
 
 //Form the proper URL
 function getAllCharacters() {
+    status.innerHTML = "Status: Initiating Search";
+
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
     
@@ -38,6 +47,7 @@ function getAllCharacters() {
 
 //Responsible for making the server request
 function requestCharacterData(url){
+    status.innerHTML = "Status: Requesting info from SWAPI"
     let xhr = new XMLHttpRequest();
 
     xhr.onerror = dataError;
@@ -69,11 +79,8 @@ function getCharactersFromFilm(data){
         selectedCharacters.push(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]);
 
         //Now access character data
-
         getCharacterData(selectedCharacters[i]);
     }
-    
-   console.log(possibleCharacters);
 }
 
 //Get characters from film gave us url's to character info; now we request data from those urls
@@ -83,7 +90,7 @@ function getCharacterData(url){
     xhr.open("GET", proxyurl + url);
     xhr.send();
     xhr.onload = (e) => {
-        console.log("RUN");
+        status.innerHTML = "Status: Parsing character data..."
         let xhr = e.target;
 
         //Parse character data on successful request
@@ -97,6 +104,8 @@ function parseCharacterData(data)
 
     let object = JSON.parse(data);
 
+        if (characterNumber == 3) {characterNumber = 0}
+        else if (characterNumber == 2) {status.innerHTML = "Status: Complete!";}
         characterNumber++;
         let backData = document.querySelector(".data" + characterNumber);
         backData.innerHTML =  "Name: " + object.name + "<br>" +

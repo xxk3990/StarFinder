@@ -61,6 +61,10 @@ header {
     max-height: 50px;
 }
 
+#status{
+    color:#ffd700;
+}
+
 #search {
     max-width: 300px;
     max-height: 20px;
