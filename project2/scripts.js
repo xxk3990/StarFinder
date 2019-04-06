@@ -24,16 +24,17 @@ function getAllCharacters() {
     let url = STAR_URL;
 
     let searchTerm = document.querySelector("#search").value;
-    // let displayTerm = searchTerm.innerHTML;
+
     console.log(searchTerm);
 
     if (searchTerm != "") {
-        console.log(searchTerm);
         searchTerm = searchTerm.trim();
         searchTerm = encodeURIComponent(searchTerm);
         url += "people/?search=" + searchTerm;
+        console.log("URL to search for: " + url);
         requestSearch(proxyurl + url);
     }
+
     let filter = document.querySelector("#filter");
     let selectedMovie = filter.options[filter.selectedIndex].value
 
@@ -46,9 +47,6 @@ function getAllCharacters() {
 
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
-
-
-
 }
 
 //Responsible for making the server request
@@ -64,7 +62,7 @@ function requestCharacterData(url) {
 }
 
 function requestSearch(url) {
-    status.innerHTML = "Status: Requesting info from SWAPI"
+    status.innerHTML = "Status: Searching for character by name..."
     let xhr = new XMLHttpRequest();
 
     xhr.onerror = dataError;
@@ -88,11 +86,14 @@ function searchDataLoaded(e) {
 }
 
 function getSearchResult(data) {
-    let object = JSON.parse(data);
-    console.log(data);
-    let result = object.results;
-    console.log(data.results);
-    getSearchInfo(result);
+    //let myResults = object.result;
+    console.log("Data, which is from xhr.responseText: " + data);
+
+    let object = JSON.parse(data).results[0];
+    console.log(object);
+
+    
+    parseSearchData(object);
 }
 
 //Gets three random characters from a film.
@@ -100,6 +101,7 @@ function getCharactersFromFilm(data) {
 
     //Parse response data
     let object = JSON.parse(data); //Usabale JS object
+    console.log(object);
     let possibleCharacters = object.characters; //All of the characters
 
     //Randomly selects three characters
@@ -125,20 +127,6 @@ function getCharacterData(url) {
         //Parse character data on successful request
         parseCharacterData(xhr.responseText);
     };
-}
-
-function getSearchInfo(url) {
-    let xhr = new XMLHttpRequest();
-    xhr.onerror = dataError;
-    xhr.open("GET", proxyurl + url);
-    console.log(url);
-    xhr.send();
-    xhr.onload = (e) => {
-        let xhr = e.target;
-        parseSearchData(xhr.responseText);
-    }
-
-
 }
 
 //Called to parse in character data
