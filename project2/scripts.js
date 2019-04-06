@@ -152,6 +152,8 @@ function parseCharacterData(data) {
         status.innerHTML = "Status: Complete!";
     }
     characterNumber++;
+    let front = document.querySelector(".front" + characterNumber);
+    front.innerHTML = object.name;
     let backData = document.querySelector(".data" + characterNumber);
     backData.innerHTML = "Name: " + object.name + "<br>" +
         "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" + "Hair Color: " + object.hair_color + "<br>" +
@@ -162,6 +164,8 @@ function parseCharacterData(data) {
 }
 
 function parseSearchData(data) {
+    let searchFront = document.querySelector(".searchFront");
+    searchFront.innerHTML = data.name;
     let searchData = document.querySelector(".searchData");
     searchData.innerHTML = "Name: " + data.name + "<br>" +
         "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
