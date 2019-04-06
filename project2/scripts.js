@@ -8,7 +8,6 @@ window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
     document.querySelector("#newRandom").onclick = getAllCharacters;
-    //document.querySelector("#newRandom").addEventListener("click", getSearchCharacter);
     status = document.querySelector("#status");
     status.innerHTML = "Status: Ready to search!";
 };
