@@ -114,6 +114,7 @@ function getCharactersFromFilm(data) {
     }
 }
 
+
 //Get characters from film gave us url's to character info; now we request data from those urls
 function getCharacterData(url) {
     let xhr = new XMLHttpRequest();
