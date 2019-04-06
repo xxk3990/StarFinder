@@ -1,14 +1,8 @@
 * {
     font-family: sans-serif;
 }
-
-html{
-    background-color: white;
-    background-image: url(images/starry.jpg);
-}
 body {
-    background-color: black;
-    margin: 0 10vw;
+    background-image: url(images/starry.jpg);
 }
 
 #wrapper {
@@ -25,6 +19,14 @@ body {
     color: #ffd700;
     height: 100px;
     padding-top: 50px;
+    padding-bottom: 50px;
+    align-content: center;
+}
+#filter {
+    background-color: #ffd700;
+    width: 200px;
+    height: 25px;
+    padding-left: 50px;
 }
 
 .flip {
@@ -34,7 +36,7 @@ body {
     border: 2px;
     border-radius: 5px;
     width: 300px;
-    height: 400px;
+    height: 300px;
     padding-left: 50px;
     margin-bottom: 50px;
 }
@@ -45,6 +47,8 @@ body {
 }
 .back {
     background-color: white;
+    width: 300px;
+    height: 300px;
 }
 .back p {
    font-size: 20px;
@@ -60,11 +64,12 @@ header {
     padding-bottom: 20px;
 }
 
-#filter {
-    grid-column: 1/span 1;
-    background-color: #ffd700;
-    max-width: 200px;
-    max-height: 50px;
+
+.searchResult {
+    grid-column: 2/span 1;
+    width: 300px;
+    height: 300px;
+    padding-left: 20px;
 }
 
 #status{
@@ -80,11 +85,12 @@ header {
 #searchButton {
     max-width: 100px;
     max-height: 20px;
+    grid-column: 1/span 1;
 }
 
-#newRandom {
+/* #newRandom {
     grid-column: 2/span 1;
     width: 200px;
     height: 20px;
     margin-left: 100px;
-}
+} */
