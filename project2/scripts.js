@@ -168,6 +168,11 @@ $(".flip").flip({
     reverse: false,
     axis: 'y'
 });
+$(".searchResult").flip({
+    trigger: 'click',
+    reverse: false,
+    axis: 'y'
+});
 
 /* //Eventually used for image lookup
 //Get data from google
