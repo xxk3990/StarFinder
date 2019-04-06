@@ -14,12 +14,12 @@ body {
     margin: .5rem auto;
 }
 #random {
-    grid-column: 2/span 2;
+    grid-column: 1/span 3;
     color: #ffd700;
     height: 100px;
     padding-top: 50px;
     padding-bottom: 50px;
-    align-content: center;
+    margin-left: 275px;
 }
 #random p {
     color: white;
