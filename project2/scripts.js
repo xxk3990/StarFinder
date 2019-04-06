@@ -5,7 +5,10 @@ let status;
 
 //Load event
 window.onload = (e) => {
-    document.querySelector("button").onclick = getAllCharacters
+    document.querySelector("#filter").onchange = getAllCharacters;
+    document.querySelector("#searchButton").onclick = getSearchCharacter;
+    document.querySelector("#newRandom").onclick = getAllCharacters;
+    //document.querySelector("#newRandom").addEventListener("click", getSearchCharacter);
     status = document.querySelector("#status");
     status.innerHTML = "Status: Ready to search!";
 };
@@ -23,6 +26,23 @@ function getAllCharacters() {
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
 
+    
+    let filter = document.querySelector("#filter");
+    let selectedMovie = filter.options[filter.selectedIndex].value;
+
+    //Pick a random movie if the user didn't pick one
+    while (selectedMovie == 0) {
+        selectedMovie = Math.floor(Math.random() * 6)
+    }
+    url = STAR_URL;
+    url += "films/" + selectedMovie + "/";
+
+    //Now that the url is created, request the character data
+    requestCharacterData(proxyurl + url);
+}
+function getSearchCharacter() {
+    const STAR_URL = "http://swapi.co/api/";
+    let url = STAR_URL;
     let searchTerm = document.querySelector("#search").value;
 
     console.log(searchTerm);
@@ -35,18 +55,6 @@ function getAllCharacters() {
         requestSearch(proxyurl + url);
     }
 
-    let filter = document.querySelector("#filter");
-    let selectedMovie = filter.options[filter.selectedIndex].value
-
-    //Pick a random movie if the user didn't pick one
-    while (selectedMovie == 0) {
-        selectedMovie = Math.floor(Math.random() * 6)
-    }
-    url = STAR_URL;
-    url += "films/" + selectedMovie + "/";
-
-    //Now that the url is created, request the character data
-    requestCharacterData(proxyurl + url);
 }
 
 //Responsible for making the server request
@@ -144,7 +152,7 @@ function parseCharacterData(data) {
     front.innerHTML = object.name;
     let backData = document.querySelector(".data" + characterNumber);
     backData.innerHTML = "Name: " + object.name + "<br>" +
-        "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" + "Hair Color: " + object.hair_color + "<br>" +
+        "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" + "Height: " + object.height + "<br>" + "Mass: " + object.mass + "<br>" + "Skin Color: " + object.skin_color + "<br>" + "Hair Color: " + object.hair_color + "<br>" +
         "Eye Color: " + object.eye_color;
 
 
@@ -156,7 +164,7 @@ function parseSearchData(data) {
     searchFront.innerHTML = data.name;
     let searchData = document.querySelector(".searchData");
     searchData.innerHTML = "Name: " + data.name + "<br>" +
-        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
+        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
         "Eye Color: " + data.eye_color;
 
 }

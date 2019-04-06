@@ -13,7 +13,6 @@ body {
     max-height: 100vh;
     margin: .5rem auto;
 }
-
 #random {
     grid-column: 2/span 2;
     color: #ffd700;
@@ -22,10 +21,15 @@ body {
     padding-bottom: 50px;
     align-content: center;
 }
-#filter {
+#random p {
+    color: white;
+    font-size: 20px; 
+    padding-right: 60px;
+}
+#random select {
     background-color: #ffd700;
     width: 200px;
-    height: 25px;
+    height: 30px;
     padding-left: 50px;
 }
 
@@ -50,7 +54,7 @@ body {
     width: 300px;
     height: 300px;
 }
-.back p {
+.back p, .front1, .front2, .front3, .searchFront {
    font-size: 20px;
    padding: 2em;
 }
@@ -64,33 +68,45 @@ header {
     padding-bottom: 20px;
 }
 
-
 .searchResult {
     grid-column: 2/span 1;
     width: 300px;
     height: 300px;
     padding-left: 20px;
 }
+#bio {
+    grid-column: 1/span 3;
+    color: white;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
 #status{
     color:#ffd700;
+    grid-column: 2/span 2;
 }
 
 #search {
-    max-width: 300px;
-    max-height: 20px;
-    padding-bottom: 20px;
+    grid-column: 2/span 2;
+    width: 300px;
+    height: 30px;
+    margin-top: 50px;
+   
 }
-
 #searchButton {
+    grid-column: 2/span 2;
     max-width: 100px;
-    max-height: 20px;
-    grid-column: 1/span 1;
+    max-height: 20px;  
+}
+#search, #searchButton {
+    margin-left: 50px;
 }
 
-/* #newRandom {
+
+#newRandom {
     grid-column: 2/span 1;
     width: 200px;
     height: 20px;
-    margin-left: 100px;
-} */
+    margin-left: 90px;
+}
