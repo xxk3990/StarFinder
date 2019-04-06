@@ -2,8 +2,13 @@
     font-family: sans-serif;
 }
 
+html{
+    background-color: white;
+    background-image: url(images/starry.jpg);
+}
 body {
     background-color: black;
+    margin: 0 10vw;
 }
 
 #wrapper {
