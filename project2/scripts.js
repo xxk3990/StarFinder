@@ -47,6 +47,7 @@ function getSearchCharacter() {
     console.log(searchTerm);
 
     if (searchTerm != "") {
+        document.querySelector(".searchFront").innerHTML = '<img src="images/spinner.gif">';
         searchTerm = searchTerm.trim();
         searchTerm = encodeURIComponent(searchTerm);
         url += "people/?search=" + searchTerm;
