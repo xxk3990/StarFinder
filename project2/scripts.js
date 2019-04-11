@@ -34,6 +34,11 @@ function getAllCharacters() {
     url = STAR_URL;
     url += "films/" + selectedMovie + "/";
 
+    //Add the loading icon to the character panels
+    document.querySelector(".front1").innerHTML = '<img src="images/spinner.gif">';
+    document.querySelector(".front2").innerHTML = '<img src="images/spinner.gif">';
+    document.querySelector(".front3").innerHTML = '<img src="images/spinner.gif">';
+
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
 }
@@ -66,6 +71,7 @@ function requestCharacterData(url) {
 
 function requestSearch(url) {
     status.innerHTML = "Status: Searching for character by name..."
+
     let xhr = new XMLHttpRequest();
 
     xhr.onerror = dataError;
