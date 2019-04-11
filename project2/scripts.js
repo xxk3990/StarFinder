@@ -24,8 +24,6 @@ function getAllCharacters() {
 
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
-
-    
     let filter = document.querySelector("#filter");
     let selectedMovie = filter.options[filter.selectedIndex].value;
 
@@ -44,14 +42,11 @@ function getSearchCharacter() {
     let url = STAR_URL;
     let searchTerm = document.querySelector("#search").value;
 
-    console.log(searchTerm);
-
     if (searchTerm != "") {
         document.querySelector(".searchFront").innerHTML = '<img src="images/spinner.gif">';
         searchTerm = searchTerm.trim();
         searchTerm = encodeURIComponent(searchTerm);
         url += "people/?search=" + searchTerm;
-        console.log("URL to search for: " + url);
         requestSearch(proxyurl + url);
     }
 
@@ -94,13 +89,8 @@ function searchDataLoaded(e) {
 }
 
 function getSearchResult(data) {
-    //let myResults = object.result;
-    console.log("Data, which is from xhr.responseText: " + data);
 
     let object = JSON.parse(data).results[0];
-    console.log(object);
-
-    
     parseSearchData(object);
 }
 
@@ -109,7 +99,6 @@ function getCharactersFromFilm(data) {
 
     //Parse response data
     let object = JSON.parse(data); //Usabale JS object
-    console.log(object);
     let possibleCharacters = object.characters; //All of the characters
 
     //Randomly selects three characters
@@ -186,20 +175,3 @@ $(".searchResult").flip({
     reverse: false,
     axis: 'y'
 });
-
-/* //Eventually used for image lookup
-//Get data from google
-function getGoogleImageData(url)
-{
-    let xhr = new XMLHttpRequest();
-
-    xhr.onerror = dataError;
-    xhr.onload = googleImageDataLoaded;
-
-    xhr.open("Get", url);
-    xhr.send();
-}
-
-this might be useful
-https://www.googleapis.com/customsearch/v1?key=YOUR-KEY&cx=017576662512468239146:omuauf_lfve&q=tomato&callback=hndlr
-*/
