@@ -89,7 +89,7 @@ function searchDataLoaded(e) {
 }
 
 function getSearchResult(data) {
-
+    status.innerHTML = "Status: Search Complete!"
     let object = JSON.parse(data).results[0];
     parseSearchData(object);
 }
@@ -110,7 +110,6 @@ function getCharactersFromFilm(data) {
         getCharacterData(selectedCharacters[i]);
     }
 }
-
 
 //Get characters from film gave us url's to character info; now we request data from those urls
 function getCharacterData(url) {
