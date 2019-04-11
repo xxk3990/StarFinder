@@ -5,6 +5,14 @@ body {
     background-image: url(images/starry.jpg);
 }
 
+button{
+    background-color: #ffd700;
+    border-style: solid;
+    border-color: white;
+    margin: 4px;
+    padding: 1em;
+}
+
 #wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

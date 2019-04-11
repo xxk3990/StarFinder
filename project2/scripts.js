@@ -15,9 +15,6 @@ window.onload = (e) => {
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-//Google API key
-const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
-
 //Form the proper URL
 function getAllCharacters() {
     status.innerHTML = "Status: Initiating Search";
@@ -159,7 +156,7 @@ function parseSearchData(data) {
 
     //Catches user error
     if (data == undefined){
-        status.innerHTML = "Status: Eror! Search term not found!";
+        status.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
     }
     else{
