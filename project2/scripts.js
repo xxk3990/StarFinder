@@ -15,9 +15,6 @@ window.onload = (e) => {
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-//Google API key
-const googleKey = "AIzaSyD_zvFPiBpHdqe-_uWzyNxgaw0PU9YMi-E";
-
 //Form the proper URL
 function getAllCharacters() {
     status.innerHTML = "Status: Initiating Search";
@@ -33,6 +30,11 @@ function getAllCharacters() {
     }
     url = STAR_URL;
     url += "films/" + selectedMovie + "/";
+
+    //Add the loading icon to the character panels
+    document.querySelector(".front1").innerHTML = '<img src="images/spinner.gif">';
+    document.querySelector(".front2").innerHTML = '<img src="images/spinner.gif">';
+    document.querySelector(".front3").innerHTML = '<img src="images/spinner.gif">';
 
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
@@ -66,6 +68,7 @@ function requestCharacterData(url) {
 
 function requestSearch(url) {
     status.innerHTML = "Status: Searching for character by name..."
+
     let xhr = new XMLHttpRequest();
 
     xhr.onerror = dataError;
@@ -138,7 +141,7 @@ function parseCharacterData(data) {
     }
     characterNumber++;
     let front = document.querySelector(".front" + characterNumber);
-    front.innerHTML = object.name;
+    front.innerHTML = object.name + "<br>Click here for character info!";
     let backData = document.querySelector(".data" + characterNumber);
     backData.innerHTML = "Name: " + object.name + "<br>" +
         "Gender: " + object.gender + "<br>" + "Birth Year: " + object.birth_year + "<br>" + "Height: " + object.height + "<br>" + "Mass: " + object.mass + "<br>" + "Skin Color: " + object.skin_color + "<br>" + "Hair Color: " + object.hair_color + "<br>" +
@@ -149,6 +152,7 @@ function parseCharacterData(data) {
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
+<<<<<<< HEAD
     searchFront.innerHTML = data.name;
     let searchData = document.querySelector(".searchData");
     searchData.innerHTML = "Name: " + data.name + "<br>" +
@@ -164,7 +168,21 @@ function parseSearchData(data) {
         };
         }
         
+=======
+>>>>>>> 9f53e10f93de284de0deb8876ed49cb36fc24d81
 
+    //Catches user error
+    if (data == undefined){
+        status.innerHTML = "Status: Error! Search term not found!";
+        searchFront.innerHTML = "Data wasn't found!";
+    }
+    else{
+        searchFront.innerHTML = data.name + "<br>Click here for character info!";
+        let searchData = document.querySelector(".searchData");
+        searchData.innerHTML = "Name: " + data.name + "<br>" +
+            "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
+            "Eye Color: " + data.eye_color;
+    }
 }
 
 //Function will report an error fetching data
