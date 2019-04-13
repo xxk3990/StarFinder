@@ -9,11 +9,13 @@ For project 2, we decided to use Star Wars API (SWAPI: https://swapi.co/) to mak
 ## Workload
 
 ## Sources
-The background image for our page was taken from: [INSERT THE WEBSITE HERE]
-We utilized jQuery for the flipping effect of displaying character information.
-The SWAPI Documentation can be found here: https://swapi.co/documentation
-Our loading graphic was created using loading.io: https://loading.io/
+The background image for our page was taken from: https://pixabay.com/photos/starry-sky-star-galaxies-andromeda-1654074/
 
+We utilized jQuery for the flipping effect of displaying character information.
+
+The SWAPI Documentation can be found here: https://swapi.co/documentation
+
+Our loading graphic was created using loading.io: https://loading.io/
 
 We also referenced Stack Overflow, as well as the Mozilla Developer Network.
 
