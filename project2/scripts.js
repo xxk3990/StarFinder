@@ -7,6 +7,9 @@ let status;
 window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
+    document.querySelector("#searchButton").onchange = e=>{
+        localStorage.setItem(searchKey, e.target.value);
+    }
     document.querySelector("#newRandom").onclick = getAllCharacters;
     status = document.querySelector("#status");
     status.innerHTML = "Status: Ready to search!";
@@ -14,6 +17,11 @@ window.onload = (e) => {
 
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+//Gets the saved search term, if there is one
+const prefix = "eh8582-";
+const searchKey = prefix + "searchTerm";
+const storedName = localStorage.getItem(searchKey);
 
 //Form the proper URL
 function getAllCharacters() {
@@ -152,23 +160,8 @@ function parseCharacterData(data) {
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
-    searchFront.innerHTML = data.name;
-    let searchData = document.querySelector(".searchData");
-    searchData.innerHTML = "Name: " + data.name + "<br>" +
-        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
-        "Eye Color: " + data.eye_color;
-        
-        const searchField = document.querySelector("#search");
-        const searchedName = searchField.innerHTML;
-        const storedName = localStorage.getItem(searchedName);
-        if(!localStorage.getItem(storedName)) {
-            searchField.onchange = e => {
-           localStorage.setItem(storedName, e.target.value);
-        };
-        }
-        
-
-    //Catches user error
+    
+//Catches user error
     if (data == undefined){
         status.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
