@@ -148,11 +148,25 @@ function parseCharacterData(data) {
         "Eye Color: " + object.eye_color;
 
 
-
 }
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
+    searchFront.innerHTML = data.name;
+    let searchData = document.querySelector(".searchData");
+    searchData.innerHTML = "Name: " + data.name + "<br>" +
+        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
+        "Eye Color: " + data.eye_color;
+        
+        const searchField = document.querySelector("#search");
+        const searchedName = searchField.innerHTML;
+        const storedName = localStorage.getItem(searchedName);
+        if(!localStorage.getItem(storedName)) {
+            searchField.onchange = e => {
+           localStorage.setItem(storedName, e.target.value);
+        };
+        }
+        
 
     //Catches user error
     if (data == undefined){
