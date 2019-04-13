@@ -8,6 +8,9 @@ let searchStatus;
 window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
+    document.querySelector("#search").onchange = e=>{
+        localStorage.setItem(searchKey, e.target.value);
+    }
     document.querySelector("#newRandom").onclick = getAllCharacters;
     randomStatus = document.querySelector("#randomStatus");
     searchStatus = document.querySelector("#searchStatus");
@@ -17,6 +20,13 @@ window.onload = (e) => {
 
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+//Gets the saved search term, if there is one
+const prefix = "eh8582-";
+const searchKey = prefix + "searchTerm";
+const storedSearchTerm = localStorage.getItem(searchKey);
+
+document.querySelector("#search").value = storedSearchTerm;
 
 //Form the proper URL
 function getAllCharacters() {
@@ -175,6 +185,12 @@ function parseSearchData(data) {
     //Catches user error
     if (data == undefined) {
         searchStatus.innerHTML = "Status: Error! Search term not found!";
+=======
+
+//Catches user error
+    if (data == undefined){
+        status.innerHTML = "Status: Error! Search term not found!";
+>>>>>>> 787596115e3f3fa3c6cf650f7e5385a6e2c58d8c
         searchFront.innerHTML = "Data wasn't found!";
     } else {
         searchFront.innerHTML = data.name + "<br>Click here for character info!";
