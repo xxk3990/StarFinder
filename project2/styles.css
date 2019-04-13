@@ -1,12 +1,15 @@
 * {
+    /* setting fonts to verdana or a sans serif font */
     font-family: verdana, sans-serif;
 }
 
 body {
+    /*setting bg image! */
     background-image: url(images/starry.jpg);
 }
 
 button {
+    /* setting up CSS for all the buttons */
     background-color: #ffd700;
     border-style: solid;
     text-align: center;
@@ -16,6 +19,7 @@ button {
 }
 
 #wrapper {
+    /* setting up grid */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 0em;
@@ -29,23 +33,21 @@ button {
     color: #ffd700;
     padding-top: 50px;
     margin-bottom: 20px;
-    margin-left: 375px;
+    margin-left: 475px;
 }
 
 #random #randomInstructions {
     color: white;
-    font-size: 20px;
-    padding-right: 90px;
 }
 
 #random select {
     background-color: white;
-    width: 200px;
+    width: 250px;
     height: 50px;
 }
 
 #newRandom {
-    width: 200px;
+    width: 250px;
     height: 50px;
     margin-left: 70px;
 }
@@ -131,4 +133,49 @@ header {
 #searchButton {
     width: 100px;
     max-height: 80px;
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+        background: #ffd700;
+        border: 1px solid white;
+        color: black;
+        padding-bottom: 20px;
+    }
+    #wrapper {
+        /* setting up grid */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 0em;
+        max-width: 100vw;
+        max-height: 100vh;
+        margin: .5rem auto;
+    }
+    #random {
+        grid-column: 1/span 3;
+        padding-top: 50px;
+        margin-bottom: 20px;
+        margin-left: 150px;
+    }
+
+    .flip {
+        display: block;
+        width: 100%;
+        border-color: black;
+        border: 2px;
+        border-radius: 5px;
+        width: 300px;
+        height: 300px;
+        margin-left: 0px;
+        padding-left: 10px;
+        margin-bottom: 50px;
+    }
+    #allSearch {
+        grid-column: 2/span 1;
+        display: inline;
+        align-content: center;
+        margin-left: 25px; 
+    }
 }
