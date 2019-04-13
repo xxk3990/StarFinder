@@ -21,17 +21,17 @@ window.onload = (e) => {
 //Proxy URL is used due to SWAPI not having CORS enabled.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-//Gets the saved search term, if there is one
+//Gets and displays the saved search term, if there is one
 const prefix = "eh8582-";
 const searchKey = prefix + "searchTerm";
 const storedSearchTerm = localStorage.getItem(searchKey);
-
 document.querySelector("#search").value = storedSearchTerm;
 
-//Form the proper URL
+//Function will pull up characters at random
 function getAllCharacters() {
     randomStatus.innerHTML = "Status: Ready for random!";
 
+    //Form the proper URL
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
     let filter = document.querySelector("#filter");
@@ -45,19 +45,22 @@ function getAllCharacters() {
     url += "films/" + selectedMovie + "/";
 
     //Add the loading icon to the character panels
-    document.querySelector(".front1").innerHTML = '<img src="images/spinner.gif">';
-    document.querySelector(".front2").innerHTML = '<img src="images/spinner.gif">';
-    document.querySelector(".front3").innerHTML = '<img src="images/spinner.gif">';
+    for(let i = 1; i < 4; i++){
+        document.querySelector(".front" + i).innerHTML = '<img src="images/spinner.gif">';
+    }
 
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
 }
 
+//This function will get characters based on a search term instead of random characters
 function getSearchCharacter() {
+    //Form the url
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
     let searchTerm = document.querySelector("#search").value;
 
+    //Add user input to the url, after sanitizing it
     if (searchTerm != "") {
         document.querySelector(".searchFront").innerHTML = '<img src="images/spinner.gif">';
         searchTerm = searchTerm.trim();
@@ -68,7 +71,7 @@ function getSearchCharacter() {
 
 }
 
-//Responsible for making the server request
+//Responsible for making the server request for random characters
 function requestCharacterData(url) {
     randomStatus.innerHTML = "Status: Requesting random info from SWAPI"
     let xhr = new XMLHttpRequest();
@@ -80,6 +83,7 @@ function requestCharacterData(url) {
     xhr.send();
 }
 
+//Responsible for making the server request for a search term
 function requestSearch(url) {
     searchStatus.innerHTML = "Status: Searching for character by name..."
 
@@ -99,7 +103,7 @@ function filmDataLoaded(e) {
     //Loads characters on successful request
     getCharactersFromFilm(xhr.responseText);
 }
-
+//When data is loaded, this gets the response data
 function searchDataLoaded(e) {
     let xhr = e.target;
     getSearchResult(xhr.responseText);
@@ -111,7 +115,7 @@ function getSearchResult(data) {
     parseSearchData(object);
 }
 
-//Gets three random characters from a film.
+//This function will pick three random characters from the list of characters in the film
 function getCharactersFromFilm(data) {
 
     //Parse response data
@@ -123,7 +127,7 @@ function getCharactersFromFilm(data) {
     for (let i = 0; i < 3; i++) {
         selectedCharacters.push(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]);
 
-        //Now access character data
+        //Now access character data and put it into the page
         getCharacterData(selectedCharacters[i]);
     }
 }
@@ -164,6 +168,7 @@ function parseCharacterData(data) {
 
 }
 
+//Parses the character data from SWAPI. Handles an error if the user's term didn't exist.
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
 
