@@ -8,14 +8,14 @@ let searchStatus;
 window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
-    document.querySelector("#search").onchange = e=>{
+    document.querySelector("#search").onchange = e => {
         localStorage.setItem(searchKey, e.target.value);
     }
     document.querySelector("#newRandom").onclick = getAllCharacters;
     randomStatus = document.querySelector("#randomStatus");
     searchStatus = document.querySelector("#searchStatus");
     searchStatus.innerHTML = "Status: Ready to search";
-    randomStatus.innerHTML = "Status: Ready for random!";
+    randomStatus.innerHTML = "Status: Ready for random characters!";
 };
 
 //Proxy URL is used due to SWAPI not having CORS enabled.
@@ -45,7 +45,7 @@ function getAllCharacters() {
     url += "films/" + selectedMovie + "/";
 
     //Add the loading icon to the character panels
-    for(let i = 1; i < 4; i++){
+    for (let i = 1; i < 4; i++) {
         document.querySelector(".front" + i).innerHTML = '<img src="images/spinner.gif">';
     }
 
@@ -68,7 +68,6 @@ function getSearchCharacter() {
         url += "people/?search=" + searchTerm;
         requestSearch(proxyurl + url);
     }
-
 }
 
 //Responsible for making the server request for random characters
@@ -172,8 +171,8 @@ function parseCharacterData(data) {
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
 
-//Catches user error
-    if (data == undefined){
+    //Catches user error
+    if (data == undefined) {
         status.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
     } else {
