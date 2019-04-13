@@ -28,7 +28,7 @@ button {
     margin: .5rem auto;
 }
 
-#random {
+#random { /* layout for random section */
     grid-column: 1/span 3;
     color: #ffd700;
     padding-top: 50px;
@@ -36,27 +36,27 @@ button {
     margin-left: 475px;
 }
 
-#random #randomInstructions {
+#random #randomInstructions { /*random instructions CSS */
     color: white;
 }
 
-#random select {
+#random select { /* css for filter dropdown */
     background-color: white;
     width: 250px;
     height: 50px;
 }
 
-#newRandom {
+#newRandom { /* css for load new random button */
     width: 250px;
     height: 50px;
     margin-left: 70px;
 }
 
-#randomStatus {
+#randomStatus { /* CSS for random status */
     color: #ffd700;
 }
 
-.flip {
+.flip { /* setting up what the flipping panels look like */
     display: block;
     width: 100%;
     border-color: black;
@@ -68,12 +68,12 @@ button {
     margin-bottom: 50px;
 }
 
-.front {
+.front { /* front panel css */
     border: 1px solid white;
     background-color: #ffd700;
 }
 
-.back {
+.back { /* back panel css */
     background-color: white;
     width: 300px;
     height: 300px;
@@ -83,12 +83,13 @@ button {
 .front1,
 .front2,
 .front3,
-.searchFront {
+.searchFront { /* setting up the text for all the panels */
     font-size: 20px;
     padding: 2em;
+    text-align: center;
 }
 
-header {
+header { /* header layout */
     display: flex;
     justify-content: space-around;
     background: #ffd700;
@@ -97,14 +98,14 @@ header {
     padding-bottom: 20px;
 }
 
-.searchResult {
+.searchResult { /* layout for panel that displays search result! */
     grid-column: 2/span 1;
     width: 300px;
     height: 300px;
     padding-left: 20px;
 }
 
-#bio {
+#bio { /* instructions at top of page */
     grid-column: 1/span 3;
     color: white;
     font-size: 20px;
@@ -112,30 +113,30 @@ header {
     padding-right: 30px;
 }
 
-#searchStatus {
+#searchStatus { /* search status */
     color: #ffd700;
     grid-column: 2/span 2;
 }
 
-#allSearch {
+#allSearch { /* css for div wrapping all the search functions */
     grid-column: 2/span 1;
     display: inline;
     align-content: center;
     margin-left: 25px;
 }
 
-#search {
+#search { /* search field */
     width: 200px;
     height: 30px;
     margin-right: 0px;
 }
 
-#searchButton {
+#searchButton { /* search button! */
     width: 100px;
     max-height: 80px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) { /* media query for 1024 screen size */
     header {
         display: flex;
         justify-content: space-around;
