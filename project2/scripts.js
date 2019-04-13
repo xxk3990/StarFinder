@@ -166,32 +166,10 @@ function parseCharacterData(data) {
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
-<<<<<<< HEAD
-    searchFront.innerHTML = data.name;
-    let searchData = document.querySelector(".searchData");
-    searchData.innerHTML = "Name: " + data.name + "<br>" +
-        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" + "Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
-        "Eye Color: " + data.eye_color;
-
-    const searchField = document.querySelector("#search");
-    const searchedName = searchField.innerHTML;
-    const storedName = localStorage.getItem(searchedName);
-    if (!localStorage.getItem(storedName)) {
-        searchField.onchange = e => {
-            localStorage.setItem(storedName, e.target.value);
-        };
-    }
-
-
-    //Catches user error
-    if (data == undefined) {
-        searchStatus.innerHTML = "Status: Error! Search term not found!";
-=======
 
 //Catches user error
     if (data == undefined){
         status.innerHTML = "Status: Error! Search term not found!";
->>>>>>> 787596115e3f3fa3c6cf650f7e5385a6e2c58d8c
         searchFront.innerHTML = "Data wasn't found!";
     } else {
         searchFront.innerHTML = data.name + "<br>Click here for character info!";
