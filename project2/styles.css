@@ -1,11 +1,12 @@
 * {
-    font-family: sans-serif;
+    font-family: verdana, sans-serif;
 }
+
 body {
     background-image: url(images/starry.jpg);
 }
 
-button{
+button {
     background-color: #ffd700;
     border-style: solid;
     text-align: center;
@@ -22,24 +23,35 @@ button{
     max-height: 100vh;
     margin: .5rem auto;
 }
+
 #random {
     grid-column: 1/span 3;
     color: #ffd700;
-    height: 100px;
     padding-top: 50px;
-    padding-bottom: 50px;
-    margin-left: 275px;
+    margin-bottom: 20px;
+    margin-left: 375px;
 }
-#random p {
+
+#random #randomInstructions {
     color: white;
-    font-size: 20px; 
-    padding-right: 60px;
+    font-size: 20px;
+    padding-right: 90px;
 }
+
 #random select {
-    background-color: #ffd700;
+    background-color: white;
     width: 200px;
-    height: 30px;
-    padding-left: 50px;
+    height: 50px;
+}
+
+#newRandom {
+    width: 200px;
+    height: 50px;
+    margin-left: 70px;
+}
+
+#randomStatus {
+    color: #ffd700;
 }
 
 .flip {
@@ -58,14 +70,20 @@ button{
     border: 1px solid white;
     background-color: #ffd700;
 }
+
 .back {
     background-color: white;
     width: 300px;
     height: 300px;
 }
-.back p, .front1, .front2, .front3, .searchFront {
-   font-size: 20px;
-   padding: 2em;
+
+.back p,
+.front1,
+.front2,
+.front3,
+.searchFront {
+    font-size: 20px;
+    padding: 2em;
 }
 
 header {
@@ -83,6 +101,7 @@ header {
     height: 300px;
     padding-left: 20px;
 }
+
 #bio {
     grid-column: 1/span 3;
     color: white;
@@ -91,32 +110,25 @@ header {
     padding-right: 30px;
 }
 
-#status{
-    color:#ffd700;
+#searchStatus {
+    color: #ffd700;
     grid-column: 2/span 2;
+}
+
+#allSearch {
+    grid-column: 2/span 1;
+    display: inline;
+    align-content: center;
+    margin-left: 25px;
 }
 
 #search {
-    grid-column: 2/span 2;
-    width: 300px;
-    height: 30px;
-    margin-top: 50px;
-   
-}
-#searchButton {
-    grid-column: 2/span 2;
-    max-width: 200px;
-    max-height: 80px;  
-}
-#search, #searchButton {
-    margin-left: 50px;
-    margin-bottom: 10px;
-}
-
-
-#newRandom {
-    grid-column: 2/span 1;
     width: 200px;
-    height: 80px;
-    margin-left: 90px;
+    height: 30px;
+    margin-right: 0px;
+}
+
+#searchButton {
+    width: 100px;
+    max-height: 80px;
 }

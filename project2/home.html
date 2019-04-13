@@ -23,10 +23,11 @@
                 random results!
             </p>
         </div>
+            <div id = "allSearch">
             <input type="text" id="search">
             <button id="searchButton" type="submit">Search!</button>
-            <p id="status">Status: Ready to search!</p>
-
+            <p id="searchStatus">Status: Ready to search!</p>
+            </div>
             <div class="searchResult">
                 <div class="front">
                     <section>
@@ -39,7 +40,7 @@
             </div>
             
         <div id="random">
-            <p>Below you can load 3 random characters, either by movie or just completely random!</p>
+            <p id ="randomInstructions">Below you can load 3 random characters, either by movie or just completely random!</p>
             <select id="filter">
                 <option value="0">Select movie to filter results! </option>
                 <option value="1">Episode 4 </option>
@@ -50,6 +51,7 @@
                 <option value="6">Episode 3 </option>
             </select>
             <button id="newRandom" type="submit">New Random Characters!</button>
+            <p id="randomStatus">Status: Ready for random!</p>
         </div>
 
         <div class="flip">

@@ -1,15 +1,18 @@
 "use strict"
 
 let characterNumber = 0;
-let status;
+let randomStatus;
+let searchStatus;
 
 //Load event
 window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
     document.querySelector("#newRandom").onclick = getAllCharacters;
-    status = document.querySelector("#status");
-    status.innerHTML = "Status: Ready to search!";
+    randomStatus = document.querySelector("#randomStatus");
+    searchStatus = document.querySelector("#searchStatus");
+    searchStatus.innerHTML = "Status: Ready to search";
+    randomStatus.innerHTML = "Status: Ready for random!";
 };
 
 //Proxy URL is used due to SWAPI not having CORS enabled.
@@ -17,7 +20,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 //Form the proper URL
 function getAllCharacters() {
-    status.innerHTML = "Status: Initiating Search";
+    randomStatus.innerHTML = "Status: Ready for random!";
 
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
@@ -39,6 +42,7 @@ function getAllCharacters() {
     //Now that the url is created, request the character data
     requestCharacterData(proxyurl + url);
 }
+
 function getSearchCharacter() {
     const STAR_URL = "http://swapi.co/api/";
     let url = STAR_URL;
@@ -56,7 +60,7 @@ function getSearchCharacter() {
 
 //Responsible for making the server request
 function requestCharacterData(url) {
-    status.innerHTML = "Status: Requesting info from SWAPI"
+    randomStatus.innerHTML = "Status: Requesting random info from SWAPI"
     let xhr = new XMLHttpRequest();
 
     xhr.onerror = dataError;
@@ -67,7 +71,7 @@ function requestCharacterData(url) {
 }
 
 function requestSearch(url) {
-    status.innerHTML = "Status: Searching for character by name..."
+    searchStatus.innerHTML = "Status: Searching for character by name..."
 
     let xhr = new XMLHttpRequest();
 
@@ -92,7 +96,7 @@ function searchDataLoaded(e) {
 }
 
 function getSearchResult(data) {
-    status.innerHTML = "Status: Search Complete!"
+    searchStatus.innerHTML = "Status: Search Complete!"
     let object = JSON.parse(data).results[0];
     parseSearchData(object);
 }
@@ -121,7 +125,7 @@ function getCharacterData(url) {
     xhr.open("GET", proxyurl + url);
     xhr.send();
     xhr.onload = (e) => {
-        status.innerHTML = "Status: Parsing character data..."
+        randomStatus.innerHTML = "Status: Parsing random character data..."
         let xhr = e.target;
 
         //Parse character data on successful request
@@ -137,7 +141,7 @@ function parseCharacterData(data) {
     if (characterNumber == 3) {
         characterNumber = 0
     } else if (characterNumber == 2) {
-        status.innerHTML = "Status: Complete!";
+        randomStatus.innerHTML = "Status: Random complete!";
     }
     characterNumber++;
     let front = document.querySelector(".front" + characterNumber);
@@ -155,29 +159,28 @@ function parseSearchData(data) {
     searchFront.innerHTML = data.name;
     let searchData = document.querySelector(".searchData");
     searchData.innerHTML = "Name: " + data.name + "<br>" +
-        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
+        "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" + "Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
         "Eye Color: " + data.eye_color;
-        
-        const searchField = document.querySelector("#search");
-        const searchedName = searchField.innerHTML;
-        const storedName = localStorage.getItem(searchedName);
-        if(!localStorage.getItem(storedName)) {
-            searchField.onchange = e => {
-           localStorage.setItem(storedName, e.target.value);
+
+    const searchField = document.querySelector("#search");
+    const searchedName = searchField.innerHTML;
+    const storedName = localStorage.getItem(searchedName);
+    if (!localStorage.getItem(storedName)) {
+        searchField.onchange = e => {
+            localStorage.setItem(storedName, e.target.value);
         };
-        }
-        
+    }
+
 
     //Catches user error
-    if (data == undefined){
-        status.innerHTML = "Status: Error! Search term not found!";
+    if (data == undefined) {
+        searchStatus.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
-    }
-    else{
+    } else {
         searchFront.innerHTML = data.name + "<br>Click here for character info!";
         let searchData = document.querySelector(".searchData");
         searchData.innerHTML = "Name: " + data.name + "<br>" +
-            "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" +"Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
+            "Gender: " + data.gender + "<br>" + "Birth Year: " + data.birth_year + "<br>" + "Height: " + data.height + "<br>" + "Mass: " + data.mass + "<br>" + "Skin Color: " + data.skin_color + "<br>" + "Hair Color: " + data.hair_color + "<br>" +
             "Eye Color: " + data.eye_color;
     }
 }
