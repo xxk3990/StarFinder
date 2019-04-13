@@ -14,7 +14,7 @@ To meet the requirements of the project, we used a search bar with a search butt
 For the theme of our website, we decided that a starry space background would be perfect for our Star Wars app, and we used colors used in Star Wars material, such as the yellow backgrounds and the blue loading icons. We thought that using flippable panels to display character names and information would help us display information to the user in an engaging way.
 
 ## Workload
-We both worked on this project equally. Xander did most of the groundwork for the HTML and the CSS. He also implemented jQuery for displaying character data on flippable panels. Emily did a lot of the javascript work for getting the API working, as well as for handling errors. Xander coded in the appending of character data from SWAPI, and Emily did tweaks to the CSS and the HTML for better aesthetic and functional purposes.
+We both worked on this project equally. Xander did most of the groundwork for the HTML and the CSS. He added the grid layout, formatted a lot, and created the query to make sure it looked good in a 1024 by 768 screen size. He also implemented the jQuery for displaying character data on flippable panels. Emily did a lot of the javascript work for getting the API working, as well as for handling errors. Xander coded the process of pulling the data from SWAPI (both the random and the search) and appending it onto the panels, and Emily did tweaks to the CSS and the HTML for better aesthetic and functional purposes.
 
 ## Sources
 The background image for our page was taken from: https://pixabay.com/photos/starry-sky-star-galaxies-andromeda-1654074/
