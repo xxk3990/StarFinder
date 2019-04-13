@@ -169,7 +169,7 @@ function parseSearchData(data) {
 
 //Catches user error
     if (data == undefined){
-        status.innerHTML = "Status: Error! Search term not found!";
+        searchStatus.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
     } else {
         searchFront.innerHTML = data.name + "<br>Click here for character info!";
