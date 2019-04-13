@@ -167,8 +167,6 @@ function parseSearchData(data) {
         };
         }
         
-=======
->>>>>>> 9f53e10f93de284de0deb8876ed49cb36fc24d81
 
     //Catches user error
     if (data == undefined){
