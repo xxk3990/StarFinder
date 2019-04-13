@@ -7,7 +7,7 @@ let status;
 window.onload = (e) => {
     document.querySelector("#filter").onchange = getAllCharacters;
     document.querySelector("#searchButton").onclick = getSearchCharacter;
-    document.querySelector("#searchButton").onchange = e=>{
+    document.querySelector("#search").onchange = e=>{
         localStorage.setItem(searchKey, e.target.value);
     }
     document.querySelector("#newRandom").onclick = getAllCharacters;
@@ -21,7 +21,9 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 //Gets the saved search term, if there is one
 const prefix = "eh8582-";
 const searchKey = prefix + "searchTerm";
-const storedName = localStorage.getItem(searchKey);
+const storedSearchTerm = localStorage.getItem(searchKey);
+
+document.querySelector("#search").value = storedSearchTerm;
 
 //Form the proper URL
 function getAllCharacters() {
@@ -160,7 +162,7 @@ function parseCharacterData(data) {
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
-    
+
 //Catches user error
     if (data == undefined){
         status.innerHTML = "Status: Error! Search term not found!";
