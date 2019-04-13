@@ -166,6 +166,7 @@ function parseCharacterData(data) {
 
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
+<<<<<<< HEAD
     searchFront.innerHTML = data.name;
     let searchData = document.querySelector(".searchData");
     searchData.innerHTML = "Name: " + data.name + "<br>" +
