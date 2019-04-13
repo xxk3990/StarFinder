@@ -8,6 +8,7 @@ body {
 button{
     background-color: #ffd700;
     border-style: solid;
+    text-align: center;
     border-color: white;
     margin: 4px;
     padding: 1em;
@@ -104,17 +105,18 @@ header {
 }
 #searchButton {
     grid-column: 2/span 2;
-    max-width: 100px;
-    max-height: 20px;  
+    max-width: 200px;
+    max-height: 80px;  
 }
 #search, #searchButton {
     margin-left: 50px;
+    margin-bottom: 10px;
 }
 
 
 #newRandom {
     grid-column: 2/span 1;
     width: 200px;
-    height: 20px;
+    height: 80px;
     margin-left: 90px;
 }
