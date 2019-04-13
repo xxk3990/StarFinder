@@ -171,9 +171,9 @@ function parseCharacterData(data) {
 function parseSearchData(data) {
     let searchFront = document.querySelector(".searchFront");
 
-    //Catches user error
-    if (data == undefined) {
-        status.innerHTML = "Status: Error! Search term not found!";
+//Catches user error
+    if (data == undefined){
+        searchStatus.innerHTML = "Status: Error! Search term not found!";
         searchFront.innerHTML = "Data wasn't found!";
     } else {
         searchFront.innerHTML = data.name + "<br>Click here for character info!";
