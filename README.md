@@ -2,7 +2,7 @@
 Project by Xander Kaylan and Emily Horton <br>
 ### Overview <br>
 We decided to use the Star Wars API (SWAPI: https://swapi.co/) to make a webpage for looking up information about Star Wars characters. Our project allows a user to search for a character by name, or browse through random characters, which can be filtered by the film they appeared in. The intent is to introduce people to Star Wars lore that they may be unfamiliar with, as well as to allow the quick lookup of facts for characters they already knew about.
-#### Note: In order for this project to work for you, your browser must support CORS (Cross Origin Resource Sharing).
+#### Note: In order for this project to work for you, your browser must have CORS (Cross Origin Resource Sharing) disabled.
 ### Our Process <br>
 We typically met each other on Saturday afternoon to work together on the project, while making adjustments and tweaks outside of class. We kept in touch via texting.
 
